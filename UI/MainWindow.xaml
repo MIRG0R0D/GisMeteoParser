@@ -1,0 +1,87 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UI"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="UI.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="537.467" Width="526.087">
+    <Grid>
+        <DockPanel >
+            <DockPanel DockPanel.Dock="Bottom" Height="345" x:Name="appStatePanel">
+                <GroupBox Header="City group">
+                    <DockPanel>
+                        <ListBox x:Name="cityListBox" DockPanel.Dock="Left" Width="237" SelectionChanged="cityListBox_SelectionChanged" />
+                        <StackPanel Margin="10">
+                            <DockPanel Margin="0,10,0,0" >
+                                <TextBlock Text="City:" MinWidth="100"/>
+                                <TextBlock x:Name="cityTxtBlock"/>
+                            </DockPanel>
+                            <DockPanel Margin="0,10,0,0" >
+                                <TextBlock Text="Date:" MinWidth="100"/>
+                                <TextBlock x:Name="dateTxtBlock"/>
+                            </DockPanel>
+                            <DockPanel Margin="0,10,0,0" >
+                                <TextBlock Text="Day temp (°C):" MinWidth="100"/>
+                                <TextBlock x:Name="dayTempTxtBlock"/>
+                            </DockPanel>
+                            <DockPanel Margin="0,10,0,0" >
+                                <TextBlock Text="Night temp (°C):" MinWidth="100"/>
+                                <TextBlock x:Name="nightTempTxtBlock"/>
+                            </DockPanel>
+                        </StackPanel>
+
+                    </DockPanel>
+                </GroupBox>
+            </DockPanel>
+            <DockPanel DockPanel.Dock="Left" Width="243">
+                <GroupBox Header="App state">
+                    <StackPanel>
+                        <DockPanel>
+                            <TextBlock MinWidth="100"><Run Text="WCF online:"/></TextBlock>
+                            <TextBlock x:Name="stateTxtWCF"><Run Text="Offline"/></TextBlock>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock MinWidth="100"><Run Text="DB connected:"/></TextBlock>
+                            <TextBlock x:Name="stateTxtDB"><Run Text="Offline"/></TextBlock>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock MinWidth="100"><Run Text="City list retrieved:"/></TextBlock>
+                            <TextBlock x:Name="stateTxtCityList"/>
+                        </DockPanel>
+                        <DockPanel>
+                            <TextBlock MinWidth="100"><Run Text="Forecast retrieved:"/></TextBlock>
+                            <TextBlock x:Name="stateTxtForecast"/>
+                        </DockPanel>
+                    </StackPanel>
+                </GroupBox>
+            </DockPanel>
+            <DockPanel >
+                <!--center-->
+                <GroupBox Header="Update group" DockPanel.Dock="Top">
+                    <StackPanel>
+                        <DockPanel >
+                            <Button x:Name="updateBtn" Content="Update" Width="100" HorizontalAlignment="Left" Click="update_Click" DockPanel.Dock="Left"/>
+                            <TextBlock x:Name="updateTxt" Text="Updating" DockPanel.Dock="Right" Visibility="Hidden"/>
+                        </DockPanel>
+                        <ProgressBar x:Name="updateProgress" Minimum="0" Maximum="100" Value="0" Height="20" Visibility="Hidden"/>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Task group" DockPanel.Dock="Bottom">
+                    <StackPanel>
+                        <DockPanel>
+                        <xctk:TimePicker x:Name="updateTimePcker" Width="149"/>
+                            <CheckBox x:Name="scheduleChkBox" Content="Schedule update" Click="scheduleChkBox_Click" VerticalAlignment="Center"/>
+                        </DockPanel>
+                            <TextBlock Name="updateStateTxt" HorizontalAlignment="Left">temp</TextBlock>
+                    </StackPanel>
+                </GroupBox>
+            </DockPanel>
+
+        </DockPanel>
+
+
+
+    </Grid>
+</Window>
